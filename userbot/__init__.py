@@ -81,7 +81,7 @@ HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
 HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY")
 
 # Custom (forked) repo URL and BRANCH for updater.
-UPSTREAM_REPO_URL = "https://github.com/KenHV/KensurBot.git"
+UPSTREAM_REPO_URL = "https://github.com/selfrisingfloor/kidneybot.git"
 UPSTREAM_REPO_BRANCH = "master"
 
 # Console verbose logging
@@ -226,7 +226,7 @@ with bot:
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (
-        f"**KensurBot v{KENSURBOT_VERSION} is back up and running!**\n\n"
+        f"**KidneyBot v{KENSURBOT_VERSION} is back up and running!**\n\n"
         f"**Telethon:** {version.__version__}\n"
         f"**Python:** {python_version()}\n"
         f"**User:** {DEFAULTUSER}"
