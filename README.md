@@ -1,4 +1,4 @@
-# KensurBot
+# KidneyBot
 
 ## Disclaimer
 
