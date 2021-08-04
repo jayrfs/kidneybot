@@ -1,5 +1,5 @@
 {
-  "name": "KensurBot",
+  "name": "KidneyBot",
   "description": "[KensurBot] A modular Telegram userbot running on Python 3.8+ with an sqlalchemy database.",
   "logo": "#",
   "keywords": ["telegram", "userbot", "plugin", "modular", "productivity"],
