@@ -131,7 +131,7 @@ async def img_sampler(event):
         if counter <= 0:
             counter = int(1)
     else:
-        counter = int(3)
+        counter = int(1)
 
     response = googleimagesdownload()
 
