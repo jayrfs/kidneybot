@@ -145,7 +145,7 @@ async def ANTI_SPAMBOTS(welcm):
                 if not admin and not creator:
                     if ANTI_SPAMBOT_SHOUT:
                         await welcm.reply(
-                            "@admins\n"
+                            "/report\n"
                             "**Anti spambot detector!\n"
                             "This user matches my algorithms as a spambot!**"
                             f"Reason: {reason}"
@@ -171,7 +171,7 @@ async def ANTI_SPAMBOTS(welcm):
                     except BaseException:
                         if ANTI_SPAMBOT_SHOUT:
                             await welcm.reply(
-                                "@admins\n"
+                                "/report\n"
                                 "**Anti spambot detector!\n"
                                 "This user matches my algorithms as a spambot!**"
                                 f"Reason: {reason}"
