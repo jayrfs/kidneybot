@@ -14,13 +14,13 @@ async def _(bruh):
     if bruh.fwd_from:
         return
 
-    if not bruh.reply_to_msg_id:
+    '''if not bruh.reply_to_msg_id:
         return await bruh.edit("**Reply to a message containing an image!**")
 
     reply_message = await bruh.get_reply_message()
 
     if not reply_message.media:
-        return await bruh.edit("**Reply to a message containing an image!**")
+        return await bruh.edit("**Reply to a message containing an image!**")'''
 
     chat = "@bruh_sound_effect_bot"
     message_id_to_reply = bruh.message.reply_to_msg_id
@@ -74,7 +74,7 @@ async def _(bruh):
 CMD_HELP.update(
     {
         "bruh": ">`.bruh` or >`.df [level(1-8)]`"
-        "\nUsage: deepbruh image/sticker from the reply."
+        "\nUsage: bruh"
         "\n@bruh_sound_effect_bot"
     }
 )
