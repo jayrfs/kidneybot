@@ -9,18 +9,10 @@ from userbot.events import register
 
 @register(outgoing=True, pattern=r"^\.bruh(:? |$)([1-8])?")
 async def _(bruh):
-    await bruh.edit("**Processing...**")
+    await bruh.edit("**Preparing Bruh Sound Effect #2...**")
     level = bruh.pattern_match.group(2)
     if bruh.fwd_from:
         return
-
-    '''if not bruh.reply_to_msg_id:
-        return await bruh.edit("**Reply to a message containing an image!**")
-
-    reply_message = await bruh.get_reply_message()
-
-    if not reply_message.media:
-        return await bruh.edit("**Reply to a message containing an image!**")'''
 
     chat = "@bruh_sound_effect_bot"
     message_id_to_reply = bruh.message.reply_to_msg_id
@@ -78,56 +70,3 @@ CMD_HELP.update(
         "\n@bruh_sound_effect_bot"
     }
 )
-
-
-'''@register(outgoing=True, pattern=r"^\.tts(?: |$)([\s\S]*)")
-async def text_to_speech(query):
-    """For .tts command, a wrapper for Google Text-to-Speech."""
-
-    if query.is_reply and not query.pattern_match.group(1):
-        message = await query.get_reply_message()
-        message = str(message.message)
-    else:
-        message = str(query.pattern_match.group(1))
-
-    if not message:
-        return await query.edit(
-            "**Give a text or reply to a message for Text-to-Speech!**"
-        )
-
-    await query.edit("**Processing...**")
-
-    try:
-        from userbot.modules.sql_helper.globals import gvarstatus
-    except AttributeError:
-        return await query.edit("**Running on Non-SQL mode!**")
-
-    if gvarstatus("tts_lang") is not None:
-        target_lang = str(gvarstatus("tts_lang"))
-    else:
-        target_lang = "en"
-
-    try:
-        gTTS(message, lang=target_lang)
-    except AssertionError:
-        return await query.edit(
-            "**The text is empty.**\n"
-            "Nothing left to speak after pre-precessing, tokenizing and cleaning."
-        )
-    except ValueError:
-        return await query.edit("**Language is not supported.**")
-    except RuntimeError:
-        return await query.edit("**Error loading the languages dictionary.**")
-    tts = gTTS(message, lang=target_lang)
-    tts.save("k.mp3")
-    with open("k.mp3", "rb") as audio:
-        linelist = list(audio)
-        linecount = len(linelist)
-    if linecount == 1:
-        tts = gTTS(message, lang=target_lang)
-        tts.save("k.mp3")
-    with open("k.mp3"):
-        await query.client.send_file(query.chat_id, "k.mp3", voice_note=True)
-        os.remove("k.mp3")
-    await query.delete()
-'''
