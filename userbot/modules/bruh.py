@@ -27,7 +27,7 @@ async def _(bruh):
     try:
         async with bruh.client.conversation(chat) as conv:
             try:
-                msg = await conv.send_message(reply_message)
+                msg = await conv.send_message("/bruh")
 
                 if level:
                     m = f"/bruh {level}"
