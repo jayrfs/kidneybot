@@ -1,5 +1,7 @@
 # KidneyBot
 
+Forked from [Kensurbot](https://github.com/KenHV/KensurBot)
+
 ## Disclaimer
 
 ```
@@ -15,7 +17,7 @@ I will not be held accountable if ender1324 spams your PM.
 
 KidneyBot is a modular Telegram userbot running on Python 3 with an SQLAlchemy database.
 
-Based on [Paperplane](https://github.com/RaphielGang/Telegram-UserBot) and [ProjectBish](https://github.com/adekmaulana/ProjectBish) userbot.
+Forked from [Kensurbot](https://github.com/KenHV/KensurBot) which is based on [Paperplane](https://github.com/RaphielGang/Telegram-UserBot) and [ProjectBish](https://github.com/adekmaulana/ProjectBish) userbot.
 I made this fork to cherry-pick some modules I needed. Eventually I started messing with the code and here we are.
 
 ## Setting up
