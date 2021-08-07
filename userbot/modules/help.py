@@ -31,5 +31,5 @@ async def help(event):
         temp = sorted(temp.split())
         for i in temp:
             final += "`\t\t\t•\t\t\t "
-            final += "`" + str(i) +"\n"
+            final += "`" + str(i)
         await event.edit(f"{final[:-5]}")
