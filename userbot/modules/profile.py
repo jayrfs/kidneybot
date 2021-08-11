@@ -17,6 +17,7 @@ from telethon.tl.functions.photos import (
     UploadProfilePhotoRequest,
 )
 from telethon.tl.types import Channel, Chat, InputPhoto, MessageMediaPhoto, User
+from logging import DEBUG, INFO, basicConfig, getLogger
 
 from userbot import CMD_HELP, bot
 from userbot.events import register
@@ -43,8 +44,8 @@ async def mine(event):
         f"{channel_obj.title}\n@{channel_obj.username}\n\n"
         for channel_obj in result.chats
     )
-
-    await event.edit(str(output_str))
+    LOGS.info("output_str")
+    await event.edit(output_str)
 
 
 @register(outgoing=True, pattern=r"^\.name")
