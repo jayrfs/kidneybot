@@ -233,7 +233,7 @@ async def update_restart_msg(chat_id, msg_id):
         f"**Telethon:** {version.__version__}\n"
         f"**Python:** {python_version()}\n"
         f"**User:** {DEFAULTUSER}"
-        f"**Branch:** {KIDNEYBOT_BRANCH}"
+        f"**Branch:** {UPSTREAM_REPO_BRANCH}"
     )
     await bot.edit_message(chat_id, msg_id, message)
     return True
