@@ -13,7 +13,7 @@ from shutil import which
 
 from telethon import version
 
-from userbot import ALIVE_NAME, CMD_HELP, KIDNEYBOT_VERSION
+from userbot import ALIVE_NAME, CMD_HELP, KIDNEYBOT_VERSION, UPSTREAM_REPO_BRANCH
 from userbot.events import register
 
 # ================= CONSTANT =================
