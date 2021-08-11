@@ -44,7 +44,7 @@ async def mine(event):
         for channel_obj in result.chats
     )
 
-    await event.edit(output_str)
+    await event.edit(str(output_str))
 
 
 @register(outgoing=True, pattern=r"^\.name")

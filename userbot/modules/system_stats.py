@@ -129,7 +129,7 @@ async def amireallyalive(alive):
         f"**KidneyBot v{KIDNEYBOT_VERSION} is up and running!**\n\n"
         f"**Telethon:** {version.__version__}\n"
         f"**Python:** {python_version()}\n"
-        f"**User:** {DEFAULTUSER}"
+        f"**User:** {DEFAULTUSER}\n"
         f"**Branch:** {UPSTREAM_REPO_BRANCH}"
     )
 
