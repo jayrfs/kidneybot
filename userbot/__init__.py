@@ -82,7 +82,7 @@ HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY")
 
 # Custom (forked) repo URL and BRANCH for updater.
 UPSTREAM_REPO_URL = "https://github.com/jayrfs/kidneybot.git"
-UPSTREAM_REPO_BRANCH = "master"
+UPSTREAM_REPO_BRANCH = "dev"
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = strtobool(os.environ.get("CONSOLE_LOGGER_VERBOSE") or "False")
@@ -168,6 +168,9 @@ USR_TOKEN = os.environ.get("USR_TOKEN_UPTOBOX")
 # KensurBot version
 KIDNEYBOT_VERSION = "1.2.5"
 
+# Branch Name
+KIDNEYBOT_BRANCH = "dev"
+
 
 def shutdown_bot(*_):
     LOGS.info("Received SIGTERM.")
@@ -230,6 +233,7 @@ async def update_restart_msg(chat_id, msg_id):
         f"**Telethon:** {version.__version__}\n"
         f"**Python:** {python_version()}\n"
         f"**User:** {DEFAULTUSER}"
+        f"**Branch:** {KIDNEYBOT_BRANCH}"
     )
     await bot.edit_message(chat_id, msg_id, message)
     return True
