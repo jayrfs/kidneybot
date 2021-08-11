@@ -130,6 +130,7 @@ async def amireallyalive(alive):
         f"**Telethon:** {version.__version__}\n"
         f"**Python:** {python_version()}\n"
         f"**User:** {DEFAULTUSER}"
+        f"**Branch:** {UPSTREAM_REPO_BRANCH}"
     )
 
 
