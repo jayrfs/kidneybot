@@ -10,9 +10,8 @@ from asyncio.subprocess import PIPE as asyncPIPE
 from os import remove
 from platform import python_version, uname
 from shutil import which
-
+import requests
 from telethon import version
-
 from userbot import ALIVE_NAME, CMD_HELP, KIDNEYBOT_VERSION, UPSTREAM_REPO_BRANCH
 from userbot.events import register
 
@@ -123,16 +122,20 @@ async def pipcheck(pip):
 
 
 @register(outgoing=True, pattern=r"^\.alive$")
-async def amireallyalive(alive):
+async def amireallyalive(event):
     """For .alive command, check if the bot is running."""
-    await alive.edit("skeet")
+    await event.delete()
+    self_user = await event.client.get_me()
+    my_username = self_user.username
+    image_url = f"https://robohash.org/set_set4/bgset_bg1/{my_username}kidneybot?size=500x500"
+    caption =   (f"<b>KidneyBot v{KIDNEYBOT_VERSION} is alive and kicking!</b>\n"
+                f"<b>Telethon:</b> {version.__version__}\n"
+                f"<b>Python:</b> {python_version()}\n"
+                f"<b>User:</b> {DEFAULTUSER}\n"
+                f"<b>Username:</b> {my_username}\n"
+                f"<b>Branch:</b> {UPSTREAM_REPO_BRANCH}")
+    photo = requests.get(image_url).content
 
-    caption = f"**KidneyBot v{KIDNEYBOT_VERSION} is up and running!**\n\n"
-        f"**Telethon:** {version.__version__}\n"
-        f"**Python:** {python_version()}\n"
-        f"**User:** {DEFAULTUSER}\n"
-        f"**Branch:** {UPSTREAM_REPO_BRANCH}"
-        
     message_id_to_reply = event.message.reply_to_msg_id
 
     if not message_id_to_reply:
@@ -148,10 +151,6 @@ async def amireallyalive(alive):
             reply_to=message_id_to_reply,
             parse_mode=r"html",
         )
-
-        if not photo.startswith("http"):
-            os.remove(photo)
-        await event.delete()
 
     except TypeError:
         await event.edit(caption, parse_mode=r"html")

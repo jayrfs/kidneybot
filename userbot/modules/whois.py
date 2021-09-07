@@ -22,7 +22,7 @@ from userbot.events import register
 async def who(event):
 
     await event.edit(
-        "**Sit tight while I steal some data from the Global Network Zone...**"
+        "**Inquiring the spirits!**"
     )
 
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
@@ -31,7 +31,7 @@ async def who(event):
     replied_user = await get_user(event)
     if replied_user is None:
         return await event.edit(
-            "**Well that's an anonymous admin, good luck figuring out which one!**"
+            "**That's an anonymous admin.\nThey tend to have a mysterious aura surrounding them.**"
         )
 
     try:
