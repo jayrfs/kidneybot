@@ -125,13 +125,37 @@ async def pipcheck(pip):
 @register(outgoing=True, pattern=r"^\.alive$")
 async def amireallyalive(alive):
     """For .alive command, check if the bot is running."""
-    await alive.edit(
-        f"**KidneyBot v{KIDNEYBOT_VERSION} is up and running!**\n\n"
+    await alive.edit("skeet")
+
+    caption = f"**KidneyBot v{KIDNEYBOT_VERSION} is up and running!**\n\n"
         f"**Telethon:** {version.__version__}\n"
         f"**Python:** {python_version()}\n"
         f"**User:** {DEFAULTUSER}\n"
         f"**Branch:** {UPSTREAM_REPO_BRANCH}"
-    )
+        
+    message_id_to_reply = event.message.reply_to_msg_id
+
+    if not message_id_to_reply:
+        message_id_to_reply = None
+
+    try:
+        await event.client.send_file(
+            event.chat_id,
+            photo,
+            caption=caption,
+            link_preview=False,
+            force_document=False,
+            reply_to=message_id_to_reply,
+            parse_mode=r"html",
+        )
+
+        if not photo.startswith("http"):
+            os.remove(photo)
+        await event.delete()
+
+    except TypeError:
+        await event.edit(caption, parse_mode=r"html")
+
 
 
 @register(outgoing=True, pattern=r"^\.aliveu")
