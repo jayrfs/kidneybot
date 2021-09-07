@@ -170,8 +170,8 @@ async def moni(event):
             "https://api.frankfurter.app/latest",
             params={"from": c_from, "to": c_to},
         ).json()
-    except Exception:
-        await event.edit("**Error: API is down.**")
+    except Exception as e2:
+        await event.edit(f"**Error: {e2}**")
         return
     if "error" in response:
         await event.edit(
