@@ -227,7 +227,7 @@ with bot:
         sys.exit(1)
 
 
-async def update_message(event):
+async def update_restart_msg(event):
     """print after update"""
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (f".alive")
