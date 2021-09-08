@@ -82,7 +82,7 @@ HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY")
 
 # Custom (forked) repo URL and BRANCH for updater.
 UPSTREAM_REPO_URL = "https://github.com/jayrfs/kidneybot.git"
-UPSTREAM_REPO_BRANCH = "master"
+UPSTREAM_REPO_BRANCH = "dev"
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = strtobool(os.environ.get("CONSOLE_LOGGER_VERBOSE") or "False")
@@ -228,13 +228,7 @@ with bot:
 
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
-    message = (
-        f"**KidneyBot v{KIDNEYBOT_VERSION} is back up and running!**\n\n"
-        f"**Telethon:** {version.__version__}\n"
-        f"**Python:** {python_version()}\n"
-        f"**User:** {DEFAULTUSER}\n"
-        f"**Branch:** {UPSTREAM_REPO_BRANCH}"
-    )
+    message = (f".alive")
     await bot.edit_message(chat_id, msg_id, message)
     return True
 
