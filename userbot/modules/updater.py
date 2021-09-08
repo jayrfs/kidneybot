@@ -163,12 +163,12 @@ async def upstream(event):
         repo.heads.master.checkout(True)
 
     ac_br = repo.active_branch.name
-    if ac_br != UPSTREAM_REPO_BRANCH:
+    '''if ac_br != UPSTREAM_REPO_BRANCH:
         await event.edit(
             f"**Looks like you are using your own custom branch: ({ac_br}). \n"
             "Please switch to** `master` **branch.**"
         )
-        return repo.__del__()
+        return repo.__del__()'''
     try:
         repo.create_remote("upstream", off_repo)
     except BaseException:
@@ -188,7 +188,7 @@ async def upstream(event):
 
     if changelog == "" and not force_update:
         await event.edit(
-            f"**Your userbot is up-to-date with `{UPSTREAM_REPO_BRANCH}`!**"
+            f"**Your userbot is up-to-date with `{ac_br}`!**"
         )
         return repo.__del__()
 
