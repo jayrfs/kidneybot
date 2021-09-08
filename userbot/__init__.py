@@ -13,9 +13,6 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 from pathlib import Path
 from platform import python_version
 
-from userbot import ALIVE_NAME, CMD_HELP, KIDNEYBOT_VERSION, UPSTREAM_REPO_BRANCH
-from userbot.events import register
-
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from telethon import TelegramClient, version
