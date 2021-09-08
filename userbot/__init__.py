@@ -258,7 +258,7 @@ async def update_message(event):
             parse_mode=r"html",
         )
     except TypeError:
-        await event.edit(caption, parse_mode=r"html")
+        await event.respond(caption, parse_mode=r"html")
 
 try:
     from userbot.modules.sql_helper.globals import delgvar, gvarstatus
