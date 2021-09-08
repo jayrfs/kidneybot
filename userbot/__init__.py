@@ -257,8 +257,6 @@ async def update_message(event):
             reply_to=message_id_to_reply,
             parse_mode=r"html",
         )
-    return True
-
 
 try:
     from userbot.modules.sql_helper.globals import delgvar, gvarstatus
