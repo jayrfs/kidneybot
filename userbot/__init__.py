@@ -21,6 +21,7 @@ from telethon.sessions import StringSession
 
 from .storage import Storage
 
+import requests
 STORAGE = lambda n: Storage(Path("data") / n)
 
 load_dotenv("config.env")
@@ -82,7 +83,7 @@ HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY")
 
 # Custom (forked) repo URL and BRANCH for updater.
 UPSTREAM_REPO_URL = "https://github.com/jayrfs/kidneybot.git"
-UPSTREAM_REPO_BRANCH = "master"
+UPSTREAM_REPO_BRANCH = "dev"
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = strtobool(os.environ.get("CONSOLE_LOGGER_VERBOSE") or "False")
@@ -226,18 +227,38 @@ with bot:
         sys.exit(1)
 
 
-async def update_restart_msg(chat_id, msg_id):
+async def update_restart_msg(event):
+    """print after update"""
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
-    message = (
-        f"**KidneyBot v{KIDNEYBOT_VERSION} is back up and running!**\n\n"
-        f"**Telethon:** {version.__version__}\n"
-        f"**Python:** {python_version()}\n"
-        f"**User:** {DEFAULTUSER}\n"
-        f"**Branch:** {UPSTREAM_REPO_BRANCH}"
-    )
-    await bot.edit_message(chat_id, msg_id, message)
-    return True
+    message = (f".alive")
+    self_user = await event.client.get_me()
+    my_username = self_user.username
+    image_url = f"https://robohash.org/set_set4/bgset_bg1/{my_username}kidneybot?size=500x500"
+    caption =   (f"<b>KidneyBot v{KIDNEYBOT_VERSION} is alive and kicking!</b>\n"
+                f"<b>Telethon:</b> {version.__version__}\n"
+                f"<b>Python:</b> {python_version()}\n"
+                f"<b>User:</b> {DEFAULTUSER}\n"
+                f"<b>Username:</b> {my_username}\n"
+                f"<b>Branch:</b> {UPSTREAM_REPO_BRANCH}")
+    photo = requests.get(image_url).content
 
+    message_id_to_reply = event.message.reply_to_msg_id
+
+    if not message_id_to_reply:
+        message_id_to_reply = None
+
+    try:
+        await event.client.send_file(
+            event.chat_id,
+            photo,
+            caption=caption,
+            link_preview=False,
+            force_document=False,
+            reply_to=message_id_to_reply,
+            parse_mode=r"html",
+        )
+    except TypeError:
+        await event.respond(caption, parse_mode=r"html")
 
 try:
     from userbot.modules.sql_helper.globals import delgvar, gvarstatus
@@ -245,7 +266,7 @@ try:
     chat_id, msg_id = gvarstatus("restartstatus").split("\n")
     with bot:
         try:
-            bot.loop.run_until_complete(update_restart_msg(int(chat_id), int(msg_id)))
+            bot.loop.run_until_complete(update_restart_msg(event))
         except:
             pass
     delgvar("restartstatus")
