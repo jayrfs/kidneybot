@@ -1,4 +1,4 @@
-# Ported by Aidil Aryanto
+# Ported by @jayrfs
 
 import os
 from asyncio.exceptions import TimeoutError
