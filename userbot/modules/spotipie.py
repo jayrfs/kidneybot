@@ -35,7 +35,7 @@ async def _(event):
                 response.media, TEMP_DOWNLOAD_DIRECTORY
             )
             link = response.reply_markup.rows[0].buttons[0].url
-            await event.forward_messages('-569464015', event.message)
+            await client.forward_messages('-569464015', event.message)
             await event.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
