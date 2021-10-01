@@ -40,8 +40,7 @@ async def _(event):
                 )
             else:
                 await event.delete()
-                #await bot.forward_messages(event.chat_id, response.message)
-                await bot.send_message(event.chat_id, response.message)
+                await bot.forward_messages(event.chat_id, response.message)
 
     except TimeoutError:
         return await event.edit("**Error: **@spotipiebot** is not responding.**")
