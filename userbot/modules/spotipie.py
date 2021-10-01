@@ -24,11 +24,11 @@ async def _(event):
                 """ - don't spam notif - """
                 await bot.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                await event.reply("**Please unblock** @SpotifyNowBot**.**")
+                await event.reply("**Please unblock** @SpotipieBot**.**")
                 return
-            if response.text.startswith("You're"):
+            if response.text.startswith("You are"):
                 await event.edit(
-                    "**You're not listening to anything on Spotify at the moment.**"
+                    "**You seem to be hearing songs in your head master, did you forget to take your meds?**"
                 )
                 return
             downloaded_file_name = await event.client.download_media(
@@ -52,7 +52,7 @@ async def _(event):
 CMD_HELP.update(
     {
         "spotifynow": ">`.spotipie`"
-        "\nUsage: Show what you're listening on spotify."
+        "\nUsage: Show what you're listening on spotify with blur."
         "\n@spotipiebot"
     }
 )
