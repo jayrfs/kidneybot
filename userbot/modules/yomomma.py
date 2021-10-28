@@ -12,6 +12,11 @@ async def yomomma(e):
             "**Rate Limited... Waiting 10 second...**")
         time.sleep(30)
         yomomma=requests.get("https://yomomma-api.herokuapp.com/jokes")
+    elif "<html>" in str(yomomma.content):
+        await e.edit(
+            "**Yo momma so ugly, the server went down trying to come up with a yo momma joke for her**")
+        break
+        yomomma=requests.get("https://yomomma-api.herokuapp.com/jokes")
     insult=str(yomomma.content)[11:-3]
     insult2=""
     for i in insult:
