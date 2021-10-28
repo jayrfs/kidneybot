@@ -11,7 +11,7 @@ from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
 
 import os, requests, time
-from asyncio.exceptions import TimeoutError, TypeError
+from asyncio.exceptions import TimeoutError
 from userbot import CMD_HELP, bot
 from userbot.events import register
 
