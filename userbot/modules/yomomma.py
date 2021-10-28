@@ -15,7 +15,7 @@ async def yomomma(e):
     elif "<html>" in str(yomomma.content):
         await e.edit(
             "**Yo momma so ugly, the server went down trying to come up with a yo momma joke for her**")
-        break
+        return
         yomomma=requests.get("https://yomomma-api.herokuapp.com/jokes")
     insult=str(yomomma.content)[11:-3]
     insult2=""
