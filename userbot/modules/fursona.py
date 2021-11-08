@@ -1,3 +1,10 @@
+# Copyright (C) 2019 The Raphielscape Company LLC.
+#
+# Licensed under the Raphielscape Public License, Version 1.c (the "License");
+# you may not use this file except in compliance with the License.
+#
+# The entire source code is OSSRPL except 'fursona' which is MPL
+# License: MPL and OSSRPL
 """ Userbot module for getting info about any user on Telegram(including you!). """
 
 import os
@@ -10,55 +17,8 @@ from telethon.utils import get_input_location
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
 
-import os, requests, time
-from asyncio.exceptions import TimeoutError
-from userbot import CMD_HELP, bot
-from userbot.events import register
 
-@register(outgoing=True, pattern=r"^\.fursona$")
-async def fursona(event):
-    """For .alive command, check if the bot is running."""
-    await event.delete()
-    self_user = await event.client.get_me()
-    my_username = self_user.username
-    image_url = f"https://robohash.org/set_set4/bgset_bg1/{my_username}kidneybot?size=500x500"
-    caption =   (f"<b>KidneyBot v{KIDNEYBOT_VERSION} is alive and kicking!</b>\n"
-                f"<b>Telethon:</b> {version.__version__}\n"
-                f"<b>Python:</b> {python_version()}\n"
-                f"<b>User:</b> {DEFAULTUSER}\n"
-                f"<b>Username:</b> {my_username}\n"
-                f"<b>Branch:</b> {UPSTREAM_REPO_BRANCH}")
-    photo = requests.get(image_url).content
-
-    message_id_to_reply = event.message.reply_to_msg_id
-
-    if not message_id_to_reply:
-        message_id_to_reply = None
-
-    try:
-        await event.client.send_file(
-            event.chat_id,
-            photo,
-            caption=caption,
-            link_preview=False,
-            force_document=False,
-            reply_to=message_id_to_reply,
-            parse_mode=r"html",
-        )
-
-    except TypeError:
-        await event.edit(caption, parse_mode=r"html")
-
-
-CMD_HELP.update(
-    {
-        "fursona": ">`.fursona [user]`\n\n"
-        "generates a fursona for the person."
-    }
-)
-
-
-@register(pattern=r"\.whois(?: |$)(.*)", outgoing=True)
+@register(pattern=r"\.fursona(?: |$)(.*)", outgoing=True)
 async def who(event):
 
     await event.edit(
@@ -76,6 +36,7 @@ async def who(event):
 
     try:
         photo, caption = await fetch_info(replied_user, event)
+        photo = requests.get(f"https://robohash.org/set_set4/bgset_bg1/{username}kidneybot?size=500x500").content
     except AttributeError:
         return await event.edit("**Couldn't fetch the info of this user.**")
 
@@ -196,3 +157,11 @@ async def fetch_info(replied_user, event):
     caption += f'<a href="tg://user?id={user_id}">{first_name}</a>'
 
     return photo, caption
+
+
+CMD_HELP.update(
+    {
+        "fursona": ">`.fursona <username> or reply to someones text with .fursona`"
+        "\nUsage: Gets info of an user."
+    }
+)
