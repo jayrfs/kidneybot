@@ -7,7 +7,7 @@
 # License: MPL and OSSRPL
 """ Userbot module for getting info about any user on Telegram(including you!). """
 
-import os, requests
+import os, requests, shutil
 
 from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
@@ -36,7 +36,6 @@ async def who(event):
 
     try:
         photo, caption = await fetch_info(replied_user, event)
-        photo = requests.get(f"https://robohash.org/set_set4/bgset_bg1/{username}kidneybot?size=500x500").content
     except AttributeError:
         return await event.edit("**Couldn't fetch the info of this user.**")
 
@@ -127,9 +126,12 @@ async def fetch_info(replied_user, event):
     is_bot = replied_user.user.bot
     restricted = replied_user.user.restricted
     verified = replied_user.user.verified
-    photo = await event.client.download_profile_photo(
+    '''photo = await event.client.download_profile_photo(
         user_id, TEMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg", download_big=True
-    )
+    )'''
+    photo = requests.get(f"https://robohash.org/set_set4/bgset_bg1/{username}kidneybot?size=500x500").content
+    with open(TEMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg", 'wb') as out_file:
+        shutil.copyfileobj(response.raw, out_file)
     first_name = (
         first_name.replace("\u2060", "")
         if first_name
