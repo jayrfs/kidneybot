@@ -7,7 +7,7 @@
 # License: MPL and OSSRPL
 """ Userbot module for getting info about any user on Telegram(including you!). """
 
-import os
+import os, requests
 
 from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
