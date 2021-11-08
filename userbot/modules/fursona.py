@@ -129,9 +129,9 @@ async def fetch_info(replied_user, event):
     '''photo = await event.client.download_profile_photo(
         user_id, TEMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg", download_big=True
     )'''
-    photo = requests.get(f"https://robohash.org/set_set4/bgset_bg1/{username}kidneybot?size=500x500").content
+    photo = requests.get(f"https://robohash.org/set_set4/bgset_bg1/{username}kidneybot?size=500x500")
     with open(TEMP_DOWNLOAD_DIRECTORY + str(user_id) + ".jpg", 'wb') as out_file:
-        shutil.copyfileobj(response.raw, out_file)
+        shutil.copyfileobj(photo.raw, out_file)
     first_name = (
         first_name.replace("\u2060", "")
         if first_name
