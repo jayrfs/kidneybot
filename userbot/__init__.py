@@ -167,7 +167,7 @@ GENIUS = os.environ.get("GENIUS_ACCESS_TOKEN")
 USR_TOKEN = os.environ.get("USR_TOKEN_UPTOBOX")
 
 # KensurBot version
-KIDNEYBOT_VERSION = "1.2.5"
+KIDNEYBOT_VERSION = "1.3.0"
 
 # Branch Name
 KIDNEYBOT_BRANCH = "dev"
@@ -227,7 +227,7 @@ with bot:
         sys.exit(1)
 
 
-async def update_restart_msg(event):
+'''async def update_restart_msg(event):
     """print after update"""
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (f".alive")
@@ -258,7 +258,20 @@ async def update_restart_msg(event):
             parse_mode=r"html",
         )
     except TypeError:
-        await event.respond(caption, parse_mode=r"html")
+        await event.respond(caption, parse_mode=r"html")'''
+
+async def update_restart_msg(chat_id, msg_id):
+    DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
+    message = (
+        f"**KidneyBot 🤖 v{KIDNEYBOT_VERSION} is back up and running! 😩👌**\n\n"
+        f"**Telethon 📱 :** {version.__version__}\n"
+        f"**Python 🐍:** {python_version()}\n"
+        f"**User 😎:** {DEFAULTUSER}"
+        f"**Username 🕺:</b> {my_username}\n"
+        f"**Branch 🌳:** {UPSTREAM_REPO_BRANCH}"
+    )
+    await bot.edit_message(chat_id, msg_id, message)
+    return True
 
 try:
     from userbot.modules.sql_helper.globals import delgvar, gvarstatus
