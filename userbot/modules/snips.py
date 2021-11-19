@@ -10,7 +10,7 @@ from userbot import BOTLOG_CHATID, CMD_HELP
 from userbot.events import register
 
 
-@register(outgoing=True, pattern=r"^\$\w*", ignore_unsafe=True, disable_errors=True)
+@register(outgoing=True, pattern=r"^\,\w*", ignore_unsafe=True, disable_errors=True)
 async def on_snip(event):
     """Snips logic."""
     try:
@@ -94,13 +94,13 @@ async def on_snip_list(event):
     for a_snip in all_snips:
         if message == "**No snips available right now.**":
             message = "**Available snips:**\n\n"
-        message += f"`${a_snip.snip}`\n"
+        message += f"`,{a_snip.snip}`\n"
     await event.edit(message)
 
 
-@register(outgoing=True, pattern=r"^\.remsnip (\w*)")
+@register(outgoing=True, pattern=r"^\.rmsnip (\w*)")
 async def on_snip_delete(event):
-    """For .remsnip command, deletes a snip."""
+    """For .rmsnip command, deletes a snip."""
     try:
         from userbot.modules.sql_helper.snips_sql import remove_snip
     except AttributeError:
@@ -114,14 +114,14 @@ async def on_snip_delete(event):
 
 CMD_HELP.update(
     {
-        "snips": ">`$<snip_name>`"
+        "snips": ">`,<snip_name>`"
         "\nUsage: Gets the specified snip, anywhere."
         "\n\n>`.snip <name> <data> or reply to a message with .snip <name>`"
         "\nUsage: Saves the message as a snip (global note) with the name."
         " (Works with pics, docs, and stickers too!)"
         "\n\n>`.snips`"
         "\nUsage: Gets all saved snips."
-        "\n\n>`.remsnip <snip_name>`"
+        "\n\n>`.rmsnip <snip_name>`"
         "\nUsage: Deletes the specified snip."
     }
 )
