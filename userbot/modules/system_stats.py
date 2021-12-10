@@ -127,12 +127,12 @@ async def amireallyalive(alive):
     self_user = await alive.client.get_me()
     my_username = self_user.username
     await alive.edit(
-        f"<b>KidneyBot v{KIDNEYBOT_VERSION} is alive and kicking!</b>\n"
-        f"<b>Telethon:</b> {version.__version__}\n"
-        f"<b>Python:</b> {python_version()}\n"
-        f"<b>User:</b> {DEFAULTUSER}\n"
-        f"<b>Username:</b> {my_username}\n"
-        f"<b>Branch:</b> {UPSTREAM_REPO_BRANCH}"
+        f"**KidneyBot 🤖 v{KIDNEYBOT_VERSION} is back up and running! 😩👌**\n\n"
+        f"**Telethon 📱 :** {version.__version__}\n"
+        f"**Python 🐍:** {python_version()}\n"
+        f"**User 😎:** {DEFAULTUSER}"
+        f"**Username 🕺:</b> {my_username}\n"
+        f"**Branch 🌳:** {UPSTREAM_REPO_BRANCH}"
     )
 
 
