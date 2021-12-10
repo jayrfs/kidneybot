@@ -124,6 +124,7 @@ async def pipcheck(pip):
 @register(outgoing=True, pattern=r"^\.alive$")
 async def amireallyalive(alive):
     """For .alive command, check if the bot is running."""
+    self_user = await event.client.get_me()
     my_username = self_user.username
     await alive.edit(
         f"<b>KidneyBot v{KIDNEYBOT_VERSION} is alive and kicking!</b>\n"

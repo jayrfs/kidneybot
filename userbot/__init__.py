@@ -228,6 +228,7 @@ with bot:
 
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
+    self_user = await event.client.get_me()
     my_username = self_user.username
     message = (
         f"**KidneyBot 🤖 v{KIDNEYBOT_VERSION} is back up and running! 😩👌**\n\n"
