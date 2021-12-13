@@ -8,6 +8,7 @@ from sqlalchemy.orm.exc import UnmappedInstanceError
 
 from userbot import BOTLOG_CHATID, CMD_HELP
 from userbot.events import register
+import asyncio
 
 
 @register(outgoing=True, pattern=r"^\,\w*", ignore_unsafe=True, disable_errors=True)
@@ -71,7 +72,7 @@ async def on_snip_save(event):
     elif event.reply_to_msg_id and not string:
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
-    success = "**Snip {} successfully. Use** `${}` **anywhere to get it**"
+    success = "**Snip {} successfully. Use** `,{}` **anywhere to get it**"
     try:
         if add_snip(keyword, string, msg_id) is False:
             await event.edit(success.format("updated", keyword))
@@ -110,7 +111,7 @@ async def on_snip_list(event):
     for a_snip in all_snips:
         if message == "**No snips available right now.**":
             message = "**Available snips:**\n\n"
-        message += f"`,{a_snip.snip}`\n"
+        message += f"`,{a_snip.snip}`\t"
     await event.edit(message)
     await asyncio.sleep(5)
     await event.delete()
