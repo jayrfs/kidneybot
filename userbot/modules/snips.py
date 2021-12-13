@@ -97,6 +97,24 @@ async def on_snip_list(event):
         message += f"`,{a_snip.snip}`\n"
     await event.edit(message)
 
+@register(outgoing=True, pattern=r"^\.tsnips$")
+async def on_snip_list(event):
+    """For .snips command, lists snips saved by you, dissapears after 5 seconds"""
+    try:
+        from userbot.modules.sql_helper.snips_sql import get_snips
+    except AttributeError:
+        return await event.edit("**Running on Non-SQL mode!**")
+
+    message = "**No snips available right now.**"
+    all_snips = get_snips()
+    for a_snip in all_snips:
+        if message == "**No snips available right now.**":
+            message = "**Available snips:**\n\n"
+        message += f"`,{a_snip.snip}`\n"
+    await event.edit(message)
+    await asyncio.sleep(5)
+    await event.delete()
+
 
 @register(outgoing=True, pattern=r"^\.rmsnip (\w*)")
 async def on_snip_delete(event):
