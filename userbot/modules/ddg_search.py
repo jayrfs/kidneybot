@@ -18,7 +18,7 @@ async def duck_duck_go(ddg_q):
     r = requests.get("http://is.gd/create.php", params=payload)'''
     await ddg_q.edit(
         f"Here you are, help yourself. \n\
-    [{duckduckgo: query}]({ddg_url})"
+    [duckduckgo: {query}]({ddg_url})"
     )
 
 CMD_HELP.update(
