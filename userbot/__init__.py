@@ -234,8 +234,8 @@ async def update_restart_msg(chat_id, msg_id):
         f"**KidneyBot 🤖 v{KIDNEYBOT_VERSION} is back up and running! 😩👌**\n\n"
         f"**Telethon 📱 :** {version.__version__}\n"
         f"**Python 🐍:** {python_version()}\n"
-        f"**User 😎:** {DEFAULTUSER}"
-        f"**Username 🕺:</b> {my_username}\n"
+        f"**User 😎:** {DEFAULTUSER}\n"
+        f"**Username 🕺:** {my_username}\n"
         f"**Branch 🌳:** {UPSTREAM_REPO_BRANCH}"
     )
     await bot.edit_message(chat_id, msg_id, message)

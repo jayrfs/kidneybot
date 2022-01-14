@@ -130,8 +130,8 @@ async def amireallyalive(alive):
         f"**KidneyBot 🤖 v{KIDNEYBOT_VERSION} is back up and running! 😩👌**\n\n"
         f"**Telethon 📱 :** {version.__version__}\n"
         f"**Python 🐍:** {python_version()}\n"
-        f"**User 😎:** {DEFAULTUSER}"
-        f"**Username 🕺:</b> {my_username}\n"
+        f"**User 😎:** {DEFAULTUSER}\n"
+        f"**Username 🕺:** {my_username}\n"
         f"**Branch 🌳:** {UPSTREAM_REPO_BRANCH}"
     )
 
